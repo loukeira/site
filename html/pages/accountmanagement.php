@@ -237,9 +237,9 @@ else
 				</span>';
 				
 		if($account_logged->getCustomField('vip_time') > 0)
-			$account_statusPic = '<img class="AccountStatusImage" src="'.$layout_name.'/images/account/account-status_green.gif" alt="free account">';
+			$account_statusPic = '<img class="AccountStatusImage" src="'.$layout_name.'/images/buttons/status_green.gif" alt="vip account">';
 		else
-			$account_statusPic = '<img class="AccountStatusImage" src="'.$layout_name.'/images/account/account-status_red.gif" alt="free account">';
+			$account_statusPic = '<img class="AccountStatusImage" src="'.$layout_name.'/images/buttons/status_red.gif" alt="free account">';
 			
 		$main_content .= '
 			<center>
@@ -298,23 +298,23 @@ else
 																				<div class="BigButton" style="background-image:url('.$layout_name.'/images/buttons/sbutton.gif)">
 																					<div onmouseover="MouseOverBigButton(this);" onmouseout="MouseOutBigButton(this);"><div class="BigButtonOver" style="background-image:url('.$layout_name.'/images/buttons/sbutton_over.gif);">
 																						</div>
-																						<input class="ButtonText" type="image" name="Manage Account" alt="Manage Account" src="'.$layout_name.'/images/buttons/_sbutton_manageaccount.gif">
+																						<input class="ButtonText" type="image" name="Manage Account" alt="Manage Account" src="'.$layout_name.'/images/buttons/manage_acc.gif">
 																					</div>
 																				</div>
 																			</form>
 																			<div style="font-size:1px;height:4px;"></div>
 																				<form action="?subtopic=doacao" method="post" style="padding:0px;margin:0px;">
-																					<div class="BigButton" style="background-image:url('.$layout_name.'/images/buttons/sbutton_green.gif)">
-																						<div onmouseover="MouseOverBigButton(this);" onmouseout="MouseOutBigButton(this);"><div class="BigButtonOver" style="background-image:url('.$layout_name.'/images/buttons/sbutton_green_over.gif);"></div>
-																							<input class="ButtonText" type="image" name="Get Premium" alt="Get Premium" src="'.$layout_name.'/images/buttons/_sbutton_getpremium.gif">
+																					<div class="BigButton" style="background-image:url('.$layout_name.'/images/buttons/green.gif)">
+																						<div onmouseover="MouseOverBigButton(this);" onmouseout="MouseOutBigButton(this);"><div class="BigButtonOver" style="background-image:url('.$layout_name.'/images/buttons/green_over.gif);"></div>
+																							<input class="ButtonText" type="image" name="Get Premium" alt="Get Premium" src="'.$layout_name.'/images/buttons/p_acc.gif">
 																						</div>
 																					</div>
 																				</form>
 																				<div style="font-size:1px;height:4px;"></div>
 																				<form action="?subtopic=accountmanagement&action=logout" method="post" style="padding:0px;margin:0px;">
-																					<div class="BigButton" style="background-image:url('.$layout_name.'/images/buttons/sbutton_red.gif)">
-																						<div onmouseover="MouseOverBigButton(this);" onmouseout="MouseOutBigButton(this);"><div class="BigButtonOver" style="background-image:url('.$layout_name.'/images/buttons/sbutton_red_over.gif);"></div>
-																							<input class="ButtonText" type="image" name="Logout" alt="Logout" src="'.$layout_name.'/images/buttons/_sbutton_logout.gif">
+																					<div class="BigButton" style="background-image:url('.$layout_name.'/images/buttons/red.gif)">
+																						<div onmouseover="MouseOverBigButton(this);" onmouseout="MouseOutBigButton(this);"><div class="BigButtonOver" style="background-image:url('.$layout_name.'/images/buttons/red_over.gif);"></div>
+																							<input class="ButtonText" type="image" name="Logout" alt="Logout" src="'.$layout_name.'/images/buttons/logout.gif">
 																						</div>
 																					</div>
 																				</form>

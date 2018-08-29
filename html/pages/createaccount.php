@@ -63,8 +63,10 @@ if(isset($_POST['step']) && $_POST['step'] == 'docreate') {
 		}
 	}
 
-	if(!isset($_POST['world']) || empty($_POST['world']))
-		$e['world'] = 'Please select a game world for your character!';
+ //    $_POST['world']=0;
+	// if(!isset($_POST['world']) || empty($_POST['world']))
+	// 	$e['world'] = 'Please select a game world for your character!';
+
 
 	$s = isset($_POST['email']) ? $_POST['email'] : '';
 
@@ -104,16 +106,16 @@ if(isset($_POST['step']) && $_POST['step'] == 'docreate') {
 	if(!isset($_POST['agreerules']) || empty($_POST['agreerules']))
 		$e['rules'] = 'You have to agree to the Tibia Rules in order to create an account!';
 
-	if(count($e) == 0) {
-		$worldid = NULL;
-		foreach($config['site']['worlds'] as $id =>$name)
-			if($worlds[$id] && $name == $_POST['world']) {
-				$worldid = $id;
-				break;
-			}
-		if($worldid === FALSE)
-			$e['world'] = 'Please select a valid game world.';
-	}
+	// if(count($e) == 0) {
+	// 	$worldid = NULL;
+	// 	foreach($config['site']['worlds'] as $id =>$name)
+	// 		if($worlds[$id] && $name == $_POST['world']) {
+	// 			$worldid = $id;
+	// 			break;
+	// 		}
+	// 	if($worldid === FALSE)
+	// 		$e['world'] = 'Please select a valid game world.';
+	// }
 
 	if(count($e) != 0) {
 		$main_content = '<div class="SmallBox"><div class="MessageContainer"><div class="BoxFrameHorizontal" style="background-image:url('.$layout_name.'/images/content/box-frame-horizontal.gif)"/></div><div class="BoxFrameEdgeLeftTop" style="background-image:url('.$layout_name.'/images/content/box-frame-edge.gif)"/></div><div class="BoxFrameEdgeRightTop" style="background-image:url('.$layout_name.'/images/content/box-frame-edge.gif)"/></div><div class="ErrorMessage"><div class="BoxFrameVerticalLeft" style="background-image:url('.$layout_name.'/images/content/box-frame-vertical.gif)"/></div><div class="BoxFrameVerticalRight" style="background-image:url('.$layout_name.'/images/content/box-frame-vertical.gif)"/></div><div class="AttentionSign" style="background-image:url('.$layout_name.'/images/content/attentionsign.gif)"/></div><b>The Following Errors Have Occurred:</b><br/>';
@@ -209,13 +211,13 @@ if(!$hardcore)
 	$main_content .= '<td align="center" valign="top"><b><script>CreateFilterOption(\'server_pvp_type\', \'hardcore\', \'Hardcore PvP\')</script></b>&nbsp;&nbsp;Killing other characters is not restricted at all<br/><br/></td>';
 
 $main_content .= '</tr></table></div></td></tr><tr><td class="LabelV150"><span'.(isset($e['world']) ? ' class="red"' : '').'><b>World Name:</b></span></td><td><div id="js_world_box" style="display:none"><table width="100%"><tr id="world_list_tr" style="text-align:left"></tr></table><span onClick="ToggleVisibility(\'js_world_box\', \'suggested_world_box\'); UpdateServerList(); "><small>[<a style="cursor:pointer">suggest game world</a>]</small></span></div><div id="suggested_world_box">Suggested world: <span id="suggested_world_div"></span><br/><span onClick="ToggleVisibility(\'suggested_world_box\', \'js_world_box\'); "><small>[<a style="cursor:pointer">change game world</a></span>]</small></div></td></tr><tr><td><table id="js_world_box" width="100%"><tr id="world_list_tr"></tr></table><table id="plain_world_box" width="100%"><tr><td>';
-foreach($worlds as $k =>$v)
-	$main_content .= '<input id="server_static_'.$config['site']['worlds'][$k].'" type="radio" name="world" value="'.$config['site']['worlds'][$k].'"'.($config['site']['worlds'][$k] == $_POST['world'] ? ' checked="checked"' : '').'><label for="server_static_'.$config['site']['worlds'][$k].'">'.$config['site']['worlds'][$k].'</label><br/>';
+// foreach($worlds as $k =>$v)
+// 	$main_content .= '<input id="server_static_'.$config['site']['worlds'][$k].'" type="radio" name="world" value="'.$config['site']['worlds'][$k].'"'.($config['site']['worlds'][$k] == $_POST['world'] ? ' checked="checked"' : '').'><label for="server_static_'.$config['site']['worlds'][$k].'">'.$config['site']['worlds'][$k].'</label><br/>';
 $main_content .= '</td></tr></table></td></tr>'.(isset($e['world']) ? '<tr><td></td><td><span class="FormFieldError">'.$e['world'].'</span></td></tr>' : '').'</table></div></div><div class="TableShadowContainer"><div class="TableBottomShadow" style="background-image:url('.$layout_name.'/images/content/table-shadow-bm.gif)"><div class="TableBottomLeftShadow" style="background-image:url('.$layout_name.'/images/content/table-shadow-bl.gif)"></div><div class="TableBottomRightShadow" style="background-image:url('.$layout_name.'/images/content/table-shadow-br.gif)"></div></div></div></td></tr><tr><td><div class="TableShadowContainerRightTop"><div class="TableShadowRightTop" style="background-image:url('.$layout_name.'/images/content/table-shadow-rt.gif)"></div></div><div class="TableContentAndRightShadow" style="background-image:url('.$layout_name.'/images/content/table-shadow-rm.gif)"><div class="TableContentContainer"><table class="TableContent" width="100%"><tr><td><b>Please select all of the following check boxes:</b></td></tr><tr><td><input type="checkbox" name="agreerules" value="true"  onClick="if(this.checked == true) {  document.getElementById(\'agreerules_errormessage\').innerHTML = \'\';} else {  document.getElementById(\'agreerules_errormessage\').innerHTML = \'You have to agree to the Tibia Rules in order to create an account!\';}"'.($_POST['step'] == 'docreate' && !isset($e['rules']) ? ' checked="checked"' : '').'/>I agree to the <a href="?subtopic=legaldocuments&page=rules" target="_blank">Tibia Rules</a>.</td></tr><tr><td><span id="agreeprivacy_errormessage" class="FormFieldError">'.(isset($e['privacy']) ? $e['privacy'] : '').'</span></td></tr></table></div></div><div class="TableShadowContainer"><div class="TableBottomShadow" style="background-image:url('.$layout_name.'/images/content/table-shadow-bm.gif)"><div class="TableBottomLeftShadow" style="background-image:url('.$layout_name.'/images/content/table-shadow-bl.gif)"></div><div class="TableBottomRightShadow" style="background-image:url('.$layout_name.'/images/content/table-shadow-br.gif)"></div></div></div></td></tr><script type="text/javascript">PreselectWorld="';
-if(isset($_POST['world']) && !empty($_POST['world']))
-	foreach($config['site']['worlds'] as $id =>$name)
-		if($worlds[$id] && $name == $_POST['world']) {
-			$main_content .= $name;
-			break;
-		}
+// if(isset($_POST['world']) && !empty($_POST['world']))
+// 	foreach($config['site']['worlds'] as $id =>$name)
+// 		if($worlds[$id] && $name == $_POST['world']) {
+// 			$main_content .= $name;
+// 			break;
+// 		}
 $main_content .= '";InitializeCharacterCreator(PreselectServerLocation, \''.(!$optional ? 'optional' : (!$open ? 'open' : 'hardcore')).'\')</script></table></div></table></div></td></tr><br/></div><center><table border="0" cellspacing="0" cellpadding="0"><tr><td style="border:0px"><input type="hidden" name=step value=docreate><input type="hidden" name=noframe value=""><div class="BigButton" style="background-image:url('.$layout_name.'/images/buttons/sbutton.gif)"><div onMouseOver="MouseOverBigButton(this)" onMouseOut="MouseOutBigButton(this)"><div class="BigButtonOver" style="background-image:url('.$layout_name.'/images/buttons/sbutton_over.gif)"></div><input class="ButtonText" type="image" name="Submit" alt="Submit" src="'.$layout_name.'/images/buttons/_sbutton_submit.gif"></div></div></td><tr></form></table></center><script type="text/javascript" language="javascript">document.forms[\'CreateAccountAndCharacter\'].elements[\'accountname\'].focus();</script><script type="text/javascript" src="account/generic.js"></script><script type="text/javascript" src="account/ajaxcip.js"></script>';

@@ -1,8 +1,8 @@
 <?PHP
 # Account Maker Config
-$config['site']['serverPath'] = "/home/marcosubuntu/Documentos/GitHub/G_BK/PROJECT/";
+$config['site']['serverPath'] = "/root/Documents/nto/Servidor BASE NTO MARCOS/";
 $config['site']['useServerConfigCache'] = false;
-$config['site']['worlds'] = array(0 => 'BaiakPvp');
+$config['site']['worlds'] = array(0 => 'NTO');
 $towns_list[0] = array(1 => 'BaiakPvp');
 
 $config['site']['outfit_images_url'] = 'images/animated/animoutfit.php';
@@ -133,7 +133,7 @@ $config['site']['shopguild_system'] = true;
 $config['site']['email_lai_sec_interval'] = 180;
 
 # Layout Config
-$config['site']['layout'] = 'tibiarl';
+$config['site']['layout'] = 'revo';
 $config['site']['vdarkborder'] = '#505050';
 $config['site']['darkborder'] = '#D4C0A1';
 $config['site']['lightborder'] = '#F1E0C6';
